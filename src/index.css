@@ -23,9 +23,9 @@ body {
 }
 
 #content {
-  max-width: 60rem;
+  max-width: 51rem;
   margin: auto;
-  padding: 2rem;
+  padding: 2rem 2rem 2.5rem;
   background: radial-gradient(#0b201d, #021619);
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
@@ -44,4 +44,5 @@ h1 em {
 
 header p {
   font-size: 1.2rem;
+  margin-bottom: 2.5rem;
 }
