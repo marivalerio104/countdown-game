@@ -4,8 +4,7 @@ dialog {
   padding: 1.75rem;
   background-color: #d7fcf8;
   margin: auto;
-  position: fixed;
-  top: 35vh;
+  min-width: 20rem;
 }
 
 dialog[open] {
@@ -13,7 +12,7 @@ dialog[open] {
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85);
 }
 
 dialog h2 {
@@ -30,7 +29,7 @@ dialog progress {
 }
 
 dialog p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
@@ -38,12 +37,13 @@ dialog p strong {
   color: #10655b;
 }
 
-dialog form {
+dialog .button-container {
   text-align: right;
 }
 
 dialog button {
   padding: 0.5rem 1rem;
+  margin-top: 0.75rem;
   border: none;
   border-radius: 4px;
   background: #12352f;
