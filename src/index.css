@@ -20,6 +20,7 @@ body {
   color: #c6f4f2;
   min-height: 100vh;
   text-align: center;
+  display: flex;
 }
 
 #content {

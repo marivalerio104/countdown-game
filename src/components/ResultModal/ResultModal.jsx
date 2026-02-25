@@ -4,21 +4,13 @@ export default function ResultModal({ ref, timeRemaining, setTimeRemaining, targ
   const lost = timeRemaining <= 0;
   const score = timeRemaining >= 0 ? Math.round((1 - timeRemaining / (targetTime * 1000)) * 100) : 0;
 
-  function handleClose() {
-    setTimeRemaining(targetTime * 1000);
-    ref.current.close();
-  }
-
-  return <dialog ref = {ref}>
-    {lost ?
-      <h2>YOU LOST!</h2>
-    : <>
-      <h2>YOU STOPPED THE TIMER!</h2>
-      <p>You stopped the timer with <strong>{timeRemaining / 1000} seconds</strong> left.</p>
-    </>}
-    <p>Your score is <strong>{score}</strong>.</p>
-    <div className="button-container">
-      <button onClick={handleClose}>Close</button>
-    </div>
+  return <dialog ref={ref} onClose={() => setTimeRemaining(targetTime * 1000)}>
+    {lost ? <h2>YOU LOST!</h2> : <h2>Score: {score}</h2>}
+    <p>The target time was <strong>{targetTime} second{targetTime > 1 && "s"}</strong>.</p>
+    {!lost && <p>You stopped the timer with <strong>{timeRemaining / 1000} seconds</strong> left.</p>}
+    <p></p>
+    <form method="dialog">
+      <button>Close</button>
+    </form>
   </dialog>
 }

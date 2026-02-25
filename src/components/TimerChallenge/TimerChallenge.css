@@ -45,3 +45,9 @@
     opacity: 0.5;
   }
 }
+
+@media (max-width: 30rem) {
+  .challenge {
+    width: 14rem;
+  }
+}
