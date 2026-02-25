@@ -3,24 +3,30 @@ import ResultModal from '../ResultModal/ResultModal';
 import './TimerChallenge.css'
 
 export default function TimerChallenge({ title, targetTime }) {
-  const [timerExpired, setTimerExpired] = useState(false);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
+
   const timer = useRef();
+  const modal = useRef();
+
+  const timerRunning = timeRemaining > 0 && timeRemaining < targetTime * 1000;
+
+  if (timeRemaining < 0) {
+    handleStop();
+  }
 
   function handleStart() {
-    setTimerRunning(true);
-    timer.current = setTimeout(() => {
-      setTimerRunning(false);
-      setTimerExpired(true);
-    }, targetTime * 1000);
+    timer.current = setInterval(() => setTimeRemaining(prev => prev - 10), 10);
   }
 
   function handleStop() {
-    clearTimeout(timer.current);
+    clearInterval(timer.current);
+    modal.current.showModal();
   }
 
   return <>
-    <ResultModal result={timerExpired ? "LOST" : "WON"} />
+    <ResultModal ref={modal} timeRemaining={timeRemaining} targetTime={targetTime}
+      setTimeRemaining={setTimeRemaining}
+    />
 
     <section className="challenge">
       <h2>{title}</h2>
